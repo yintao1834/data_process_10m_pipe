@@ -36,9 +36,8 @@ fig = plt.figure(figsize=(20,10))
 for i in range(1,13):
     df = pd.read_csv(FILE_DIR/f'output{2.5*i}-{2.5*i}.csv', index_col=0)
     signal = df.copy()
-    # mask1 = signal.index < 0.07
-    # mask2 = signal.index < 0.07
-    mask
+    mask1 = signal.index < 0.07
+    mask2 = signal.index < 0.07
 
     # 这个会改变mask范围内的所有点，但我们其实只需要处理异常点
     # signal.loc[mask, 'ch1'] = medfilt(signal.loc[mask, 'ch1'], kernel_size=7)
@@ -57,10 +56,10 @@ for i in range(1,13):
     # signal.loc[mask, 'ch4'] = hampel_filter(signal.loc[mask, 'ch4'])
 
     # 直接设置为0
-    signal.loc[mask, 'ch1'] = 0
-    signal.loc[mask, 'ch2'] = 0
-    signal.loc[mask, 'ch3'] = 0
-    signal.loc[mask, 'ch4'] = 0
+    signal.loc[mask1, 'ch1'] = 0
+    signal.loc[mask1, 'ch2'] = 0
+    signal.loc[mask1, 'ch3'] = 0
+    signal.loc[mask1, 'ch4'] = 0
 
     # signal = pd.DataFrame(signal, index = signal.index, columns= signal.columns)
     signal.to_csv(FILE_DIR/f'processed{2.5*i}-{2.5*i}.csv')

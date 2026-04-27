@@ -4,7 +4,7 @@ from pathlib import Path
 
 Bace_Dir = Path(__file__).parent
 Process_Dir = Bace_Dir/'data'/'case1'
-data_path = Process_Dir/'accumulate_result.csv'
+data_path = Process_Dir/'accumulate_result_new.csv'
 out_Dir = Process_Dir/'output'
 out_Dir.mkdir(exist_ok=True)
 
@@ -54,8 +54,3 @@ for i in range(1, 13):
     out_path = Process_Dir/'output'/f'output{2.5*i}-{2.5*i}.csv'
     df.to_csv(out_path)
 
-
-
-
-
-# def reverse_strain()
